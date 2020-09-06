@@ -17,9 +17,13 @@ possible to:
 
 When creating or editing a domain, the API provides control over:
 
-1. Domain ownership. i.e; Which WordPress user is the 'author' of the domain.
-1. Domain URL mappings. i.e; Which URLs map (or redirect) to which posts, pages, etc.
-1. Domain settings. i.e; Protocol enforcement, active status, etc.
+1. Domain URL mappings (you can think of these as routes/endpoints)
+    - Mappings can resolve to posts/pages/archives
+    - Mappings can also redirect to both relative and absolute URLs
+1. Domain settings
+    - Protocol enforcement
+    - Active status
+    - Domain ownership (which WordPress user is the 'author' of the domain)
 
 ### Important!
 
