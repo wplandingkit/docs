@@ -29,8 +29,8 @@ When creating or editing a domain, the API provides control over:
 
 It is important to keep in mind that the API affects the database and should not be used as part of a typical WordPress
 page load. Instead, it is designed to be used at strategic points as a means of automating domain creation/manipulation.
-e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or after a user registers on a
-site.
+e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or perhaps after user
+registration, etc.
 
 ## Functions
 
