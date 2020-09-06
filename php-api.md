@@ -4,8 +4,8 @@
 - [Functions](#functions)
 - [Objects](#objects)
   - [WPLK_Domain](#wplk_domain)
-    - [Creating a new domain](#creating_a_new_domain)
-    - [Retrieving an existing domain](#retrieving_an_existing_domain)
+    - [Creating a new domain](#creating-a-new-domain)
+    - [Retrieving an existing domain](#retrieving-an-existing-domain)
   - [WPLK_Mapping](#wplk_mapping)
 
 ## Introduction
