@@ -55,12 +55,14 @@ functions. The class can be used to:
 ```php
 // Simply pass the domain host name on instantiation.
 $domain = new WPLK_Domain('mydomain.com');
+$domain->activate();
 $domain->save();
 ```
 
 ```php
 // Note, you can also pass a full URL — the object will extract the `mydomain.com` host name in this case.
 $domain = new WPLK_Domain('http://mydomain.com/some/url');
+$domain->activate();
 $domain->save();
 ```
 
@@ -70,14 +72,15 @@ $domain->save();
 // saved to the database.
 $domain = new WPLK_Domain;
 $domain->set_host('mydomain.com');
+$domain->activate();
 $domain->save();
 ```
 
 ```php
 $domain = new WPLK_Domain([
     'host' => 'mydomain.com',
-    'is_active' => true,
-    'enforced_protocol' => 'https',
+    'is_active' => true, // (optional)
+    'enforced_protocol' => 'https', // (optional)
 ]);
 $domain->save();
 ```
