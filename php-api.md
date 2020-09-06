@@ -4,6 +4,8 @@
 - [Functions](#functions)
 - [Objects](#objects)
   - [WPLK_Domain](#wplk_domain)
+    - [Creating a new domain](#Creating a new domain)
+    - [Retrieving an existing domain](#retrieving an existing domain)
   - [WPLK_Mapping](#wplk_mapping)
 
 ## Introduction
@@ -42,12 +44,47 @@ todo
 
 ### WPLK_Domain
 
-todo
+The `WPLK_Domain` object is the backbone of domain management and is the underlying component powering all of the API
+functions. The class can be used to:
+
+1. Retrieve existing domain instances from the database and;
+1. Creation of new instances for configuration and insertion into the database.
+
+#### Creating a new domain
 
 ```php
-$obj = new WPLK_Domain();
-$obj->set_host('https://sadfsdf.com');
+// Simply pass the domain host name on instantiation.
+$domain = new WPLK_Domain('mydomain.com');
+$domain->save();
 ```
+
+```php
+// Note, you can also pass a full URL — the object will extract the `mydomain.com` host name in this case.
+$domain = new WPLK_Domain('http://mydomain.com/some/url');
+$domain->save();
+```
+
+```php
+// Passing no args to the constructor requires the use of the set_host() method to set the actual domain host name. If
+// no host name is set, subsequent calls to $domain->save() will return a WP_Error object and the domain will not be
+// saved to the database.
+$domain = new WPLK_Domain;
+$domain->set_host('mydomain.com');
+$domain->save();
+```
+
+```php
+$domain = new WPLK_Domain([
+    'host' => 'mydomain.com',
+    'is_active' => true,
+    'enforced_protocol' => 'https',
+]);
+$domain->save();
+```
+
+#### Retrieving an existing domain
+
+todo
 
 ### WPLK_Mapping
 
