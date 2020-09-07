@@ -80,21 +80,21 @@ Be mindful that instantiating a domain object does not add it to the database. I
 further configure and save. Until a domain is explicitly activated and saved to the database, the domain will not handle
 requests made to the site.
 
-The following example is a more complete demonstration of how to create and activate a domain:
+The following example is a more complete demonstration of how to create and activate a domain. In this example, we are:
+
+1. Creating a new domain object;
+1. Setting the post/page to show as the domain's root/home;
+1. Setting the active flag on the domain;
+1. Saving the domain to the database;
+1. Checking for any errors on save.
 
 ```php
 $domain = new WPLK_Domain( 'mydomain.com' );
-
-// Specify which post is resolved as the root/home on this domain.
 $domain->root()->maps_to_post( $post_id );
-
-// Set the active flag on this domain.
 $domain->activate();
 
-// Insert the domain into the database.
 $saved = $domain->save();
 
-// Check for, and handle, any errors during save.
 if( is_wp_error( $saved ) ){
     // …do something…
 }
