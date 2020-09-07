@@ -109,7 +109,49 @@ otherwise, these methods all accept or return one or more [WPLK_Mapping](wplk_ma
 The root mapping is a requirement for a domain as it specifies what should happen when a user visits the domain root.
 e.g; `http://mydomain.com/`.
 
-The `root()` method provides a number of ways to
+There are a number of ways to define a root mapping
+
+1. You can simply pass a post ID to map to:
+
+```php
+$domain = new WPLK_Domain('mydomain.com');
+$domain->root( $post_id );
+```
+
+1. asfasfasdf
+
+// Test passing an array of mapping args.
+// Test passing an array of mapping args and a callback.
+// Test passing a post ID and a callback.
+// test passing a post object and a callback.
+// Test passing just a callback.
+// Test that second param is ignored when passing callback to first.
+
+#### A note on mapping instances
+
+The `root()` method, when called without method args, will return an instance of [WPLK_Mapping](wplk_mapping.md) for
+further configuration. If no root mapping is set, the method will create a new mapping instance and assign it to the
+domain. Subsequent calls without method args will return the same object.
+
+```php
+$domain = new WPLK_Domain('mydomain.com');
+$mapping = $domain->root()->maps_to_post( $post_id );
+
+$mapping === $domain->root(); // TRUE (objects are the same instance)
+```
+
+Whenever args are passed to the `root(…$args)` method, an new mapping instance is created an assiged to the root. This
+effectively resets the root mapping.
+
+```php
+$domain = new WPLK_Domain('mydomain.com');
+$mapping = $domain->root()->maps_to_post( $post_id );
+
+// This will reset the root mapping object entirely.
+$domain->root( [ 'post_it' => $post_id_2 ] );
+
+$mapping !== $domain->root(); // TRUE (objects are different instances)
+```
 
 ### Working with the fallback mapping
 
