@@ -93,7 +93,7 @@ $domain->activate();
 // Insert the domain into the database.
 $saved = $domain->save();
 
-// Check for, and handle, any errors during save. 
+// Check for, and handle, any errors during save.
 if( is_wp_error( $saved ) ){
     // …do something…
 }
