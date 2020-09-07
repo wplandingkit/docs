@@ -267,11 +267,11 @@ $domain->add_mapping( 'some/third/url', $post_id_3 );
 
 // Search for any mappings that match.
 $mappings = $domain->find_mapping( function( WPLK_Mapping $mapping ){
-    if($mapping->url_path === 'some/url'){
+    if( $mapping->url_path === 'some/url' ){
         return true;
     }
 
-    if($mapping->url_path === 'some/other/url'){
+    if( $mapping->url_path === 'some/other/url' ){
         return true;
     }
 
@@ -318,5 +318,5 @@ $mapping1 = $domain->add_mapping( 'some/url', $post_id );
 $mapping2 = $domain->add_mapping( 'some/other/url', $post_id_2 );
 $mapping3 = $domain->add_mapping( 'some/third/url', $post_id_3 );
 
-count($domain->mappings()) === 3; // TRUE
+count( $domain->mappings() ) === 3; // TRUE
 ```
