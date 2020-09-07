@@ -6,6 +6,7 @@
   - [WPLK_Domain](#wplk_domain)
     - [Creating a new domain](#creating-a-new-domain)
     - [Retrieving an existing domain](#retrieving-an-existing-domain)
+    - [Managing URL mappings](#managing-url-mappings)
   - [WPLK_Mapping](#wplk_mapping)
 
 ## Introduction
@@ -100,6 +101,10 @@ if( is_wp_error( $saved ) ){
 ```
 
 #### Retrieving an existing domain
+
+todo
+
+#### Managing URL mappings
 
 todo
 
