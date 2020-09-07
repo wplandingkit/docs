@@ -102,7 +102,24 @@ if( is_wp_error( $saved ) ){
 
 #### Retrieving an existing domain
 
-todo
+You can retrieve an instance of a domain that already stored in the database using the `WPLK_Domain::get_instance()`
+method. The method returns a `WPLK_Domain` instance when it can find a post or `NULL` when it cannot.
+
+The method accepts either a post ID or a domain host name. e.g;
+
+```php
+// Using a post ID.
+$domain = WPLK_Domain::get_instance( $post_id );
+
+// Using a host name.
+$domain = WPLK_Domain::get_instance( 'mydomain.com' );
+
+// Using a full URL (the host name will be extraced from the URL).
+$domain = WPLK_Domain::get_instance( 'http://mydomain.com/some/url' );
+```
+
+Be mindful that the most performant option is to use the post ID. Using the host name resorts to searching for the
+underlying domain post by title.
 
 #### Managing URL mappings
 
