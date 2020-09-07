@@ -114,6 +114,9 @@ There are a number of ways to define a root mapping:
 ```php
 $domain = new WPLK_Domain( 'mydomain.com' );
 
+// Chaining mapping methods.
+$domain->root()->maps_to_post( $post_id );
+
 // Passing a post ID or WP_Post object.
 $domain->root( $post );
 
