@@ -158,9 +158,82 @@ $mapping !== $domain->root();
 
 ### Working with the fallback mapping
 
-The fallback mapping functions exactly the same as the root method (see [Managing URL mappings](#managing-url-mappings)).
+The fallback mapping functions exactly the same as the root method (see [Working with the root mapping](#working-with-the-root-mapping)).
+The only difference here is that you would call the `fallback()` method as opposed to the `root()` method. e.g;
+
+```php
+$domain = new WPLK_Domain( 'mydomain.com' );
+$domain->fallback()->redirects_to( $url, $http_status );
+```
 
 ### Adding URL mappings
+
+You may add as many URL mappings as you desire. The only URL mapping that is required is the root mapping so you don't
+have to add any if you don't need to.
+
+URL mappings are added to the domain in the order they are registered in the code and when matching a request to a
+mapping, the plugin will start at the root, work through all mappings in order, then check the fallback mapping. The
+first URL mapping it finds to match a users' request will be used.
+
+URL mappings are added using the `add_mapping()` method. The method can be used a number of ways:
+
+```php
+$domain = new WPLK_Domain( 'mydomain.com' );
+
+// Pass no args and manipulate the returned instance.
+$mapping = $domain->add_mapping();
+$mapping->set_url_path( 'some/url' );
+$mapping->maps_to_post( $post_id );
+
+// Pass only a URL path and manipulate the returned instance.
+$mapping = $domain->add_mapping( 'some/url' );
+$mapping->maps_to_post( $post_id );
+
+// Map a post ID to a URL path.
+$domain->add_mapping( 'some/url', $post_id );
+
+// Map a post object to a URL path.
+$domain->add_mapping( 'some/url', get_post( $post_id ) );
+
+// Use a callback to configure the mapping object.
+$domain->add_mapping( function( WPLK_Mapping $mapping){
+    $mapping->set_url_path( 'some/url' )->maps_to_post( $post_id );
+} );
+
+// Use RegEx in the URL.
+$domain->add_mapping( 'some/url/.+', $post_id, true );
+
+// Map using a URL path and a callback.
+$domain->add_mapping( 'some/url', function( WPLK_Mapping $mapping){
+    $mapping->maps_to_post( $post_id );
+} );
+
+// Pass a WPLK_Mapping instance.
+$mapping = new WPLK_Mapping( 'some/url' );
+$mapping->maps_to_post( $post_id );
+$domain->add_mapping( $mapping );
+
+// Pass a WPLK_Mapping instance and configure it using a callback.
+$mapping = new WPLK_Mapping( 'some/url' );
+$domain->add_mapping( $mapping, function( WPLK_Mapping $mapping){
+   $mapping->maps_to_post( $post_id );
+} );
+
+// Pass an array of WPLK_Mapping args.
+$domain->add_mapping( [
+    'url_path' => 'some/url',
+    'post_type' => $post_type,
+    'post_id' => $post_id,
+] );
+
+// Pass an array of WPLK_Mapping args and configure using a callback.
+$domain->add_mapping( [
+    'url_path' => 'some/url',
+    'post_type' => $post_type,
+], function( WPLK_Mapping $mapping){
+    $mapping->maps_to_post( $post_id );
+} );
+```
 
 ### Finding URL mappings
 
