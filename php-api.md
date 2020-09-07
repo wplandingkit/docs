@@ -41,7 +41,8 @@ todo
 
 ## Objects
 
-todo
+There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These
+are a part of the API and are save to use as per these documented examples.
 
 ### WPLK_Domain
 
