@@ -129,30 +129,31 @@ $domain->root( function( WPLK_Mapping $mapping ){
 $domain->root( [ 'post_id' => $post_id ] );
 ```
 
-#### A note on mapping instances
+#### A note on how root mapping instances are handled
 
 The `root()` method, when called without method args, will return an instance of [WPLK_Mapping](wplk_mapping.md) for
 further configuration. If no root mapping is set, the method will create a new mapping instance and assign it to the
-domain. Subsequent calls without method args will return the same object.
+domain. If method args are passed on this call, they'll be used to configure the newly created instance. Subsequent
+calls without method args will return the same object.
 
 ```php
-$domain = new WPLK_Domain( 'mydomain.com' );
 $mapping = $domain->root()->maps_to_post( $post_id );
 
-$mapping === $domain->root(); // TRUE (objects are the same instance)
+// TRUE (objects are the same instance)
+$mapping === $domain->root();
 ```
 
 Whenever args are passed to the `root(…$args)` method, an new mapping instance is created an assiged to the root. This
 effectively resets the root mapping.
 
 ```php
-$domain = new WPLK_Domain( 'mydomain.com' );
 $mapping = $domain->root()->maps_to_post( $post_id );
 
 // This will reset the root mapping object entirely.
 $domain->root( [ 'post_it' => $post_id_2 ] );
 
-$mapping !== $domain->root(); // TRUE (objects are different instances)
+// TRUE (objects are different instances)
+$mapping !== $domain->root();
 ```
 
 ### Working with the fallback mapping
