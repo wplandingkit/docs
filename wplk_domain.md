@@ -85,4 +85,14 @@ underlying domain post by title.
 
 ## Managing URL mappings
 
-There are a few object methods the enable you to add, edit, and remove, URL mappings for a domain.
+There are a few object methods the enable you to add, edit, and remove, URL mappings for a domain:
+
+| Method | Description |
+|---|---|
+| mappings() | Returns an array of all dynamic mapping objects (exludes root and fallback mappings) |
+| add_mapping() | Add a new mapping. |
+| find_mapping() | Find a specific mapping object. |
+| find_mappings() | Find multiple mapping objects. |
+| remove_mapping() | Remove a mapping. |
+| root() | Get the root mapping object. |
+| fallback() | Get the fallback mapping object. |
