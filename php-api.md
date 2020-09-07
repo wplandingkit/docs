@@ -52,37 +52,51 @@ functions. The class can be used to:
 
 #### Creating a new domain
 
+You can create a new domain object by instantiating the object with a variety of contructor args.
+
 ```php
 // Simply pass the domain host name on instantiation.
-$domain = new WPLK_Domain('mydomain.com');
-$domain->activate();
-$domain->save();
-```
+$domain = new WPLK_Domain( 'mydomain.com' );
 
-```php
 // Note, you can also pass a full URL — the object will extract the `mydomain.com` host name in this case.
-$domain = new WPLK_Domain('http://mydomain.com/some/url');
-$domain->activate();
-$domain->save();
-```
+$domain = new WPLK_Domain( 'http://mydomain.com/some/url' );
 
-```php
 // Passing no args to the constructor requires the use of the set_host() method to set the actual domain host name. If
 // no host name is set, subsequent calls to $domain->save() will return a WP_Error object and the domain will not be
 // saved to the database.
 $domain = new WPLK_Domain;
-$domain->set_host('mydomain.com');
-$domain->activate();
-$domain->save();
-```
+$domain->set_host( 'mydomain.com' );
 
-```php
-$domain = new WPLK_Domain([
+// It is also possible to use an array when instantiating a new domain object.
+$domain = new WPLK_Domain( [
     'host' => 'mydomain.com',
     'is_active' => true, // (optional)
     'enforced_protocol' => 'https', // (optional)
-]);
-$domain->save();
+] );
+```
+
+Be mindful that instantiating a domain object does not add it to the database. It merely creates an object for you to
+further configure and save. Until a domain is explicitly activated and saved to the database, the domain will not handle
+requests made to the site.
+
+The following example is a more complete demonstration of how to create and activate a domain:
+
+```php
+$domain = new WPLK_Domain( 'mydomain.com' );
+
+// Specify which post is resolved as the root/home on this domain.
+$domain->root()->maps_to_post( $post_id );
+
+// Set the active flag on this domain.
+$domain->activate();
+
+// Insert the domain into the database.
+$saved = $domain->save();
+
+// Check for, and handle, any errors during save. 
+if( is_wp_error( $saved ) ){
+    // …do something…
+}
 ```
 
 #### Retrieving an existing domain
