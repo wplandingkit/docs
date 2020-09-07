@@ -3,11 +3,6 @@
 - [Introduction](#introduction)
 - [Functions](#functions)
 - [Objects](#objects)
-  - [WPLK_Domain](#wplk_domain)
-    - [Creating a new domain](#creating-a-new-domain)
-    - [Retrieving an existing domain](#retrieving-an-existing-domain)
-    - [Managing URL mappings](#managing-url-mappings)
-  - [WPLK_Mapping](#wplk_mapping)
 
 ## Introduction
 

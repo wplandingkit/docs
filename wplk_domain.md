@@ -1,5 +1,9 @@
 # WPLK_Domain
 
+- [Creating a new domain](#creating-a-new-domain)
+- [Retrieving an existing domain](#retrieving-an-existing-domain)
+- [Managing URL mappings](#managing-url-mappings)
+
 The `WPLK_Domain` object is the backbone of domain management and is the underlying component powering all of the API
 functions. The class can be used to:
 
