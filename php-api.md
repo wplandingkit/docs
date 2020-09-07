@@ -6,7 +6,7 @@
 
 ## Introduction
 
-WP Landing Kit provides a simple PHP API to enable developers to programmatically work with domains. The API makes it
+[WP Landing Kit](https://wplandingkit.com/) provides a simple PHP API to enable developers to programmatically work with domains. The API makes it
 possible to:
 
 1. Add new domain entries to the database.
