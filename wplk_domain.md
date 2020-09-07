@@ -109,31 +109,20 @@ otherwise, these methods all accept or return one or more [WPLK_Mapping](wplk_ma
 The root mapping is a requirement for a domain as it specifies what should happen when a user visits the domain root.
 e.g; `http://mydomain.com/`.
 
-There are a number of ways to define a root mapping
-
-#### Passing a post ID or WP_Post object
+There are a number of ways to define a root mapping:
 
 ```php
 $domain = new WPLK_Domain( 'mydomain.com' );
+
+// Passing a post ID or WP_Post object.
 $domain->root( $post );
-```
 
-#### Passing a callback
-
-```php
-$domain = new WPLK_Domain('mydomain.com');
+// Passing a callback.
 $domain->root( function( WPLK_Mapping $mapping ){
-    // Manipulate the $mapping instance
     $mapping->maps_to_term_archive( $term_id, true );
 } );
-```
 
-_Note that when passing a callback as the first parameter, the second parameter is ignored._
-
-#### Passing an array of mapping args
-
-```php
-$domain = new WPLK_Domain( 'mydomain.com' );
+// Passing an array of mapping args
 $domain->root( [ 'post_id' => $post_id ] );
 ```
 
