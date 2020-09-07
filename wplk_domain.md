@@ -158,7 +158,7 @@ $mapping !== $domain->root();
 
 ### Working with the fallback mapping
 
-todo
+The fallback mapping functions exactly the same as the root method (see [Managing URL mappings](#managing-url-mappings)).
 
 ### Adding URL mappings
 
