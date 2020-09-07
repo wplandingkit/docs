@@ -237,6 +237,48 @@ $domain->add_mapping( [
 
 ### Finding URL mappings
 
+If you need to find a single mapping already on the domain object, you may do so using the `find_mapping()` method. The
+method will return an instance of `WPLK_Mapping` or `FALSE` where it cannot find the mapping.
+
+You can search for a mapping by either the mapping ID or using a callback function to compare data on the mapping
+objects. If using a callback, returning `TRUE` from within the callback will stop the search and the function will
+return that particular object being evaluated.
+
+```php
+$added_mapping = $domain->add_mapping( 'some/url', $post_id );
+
+// Searching via mapping ID.
+$mapping = $domain->find_mapping( $added_mapping->mapping_id );
+
+// Searching via callback.
+$mapping = $domain->find_mapping( function( WPLK_Mapping $mapping ){
+    return $mapping->url_path == 'some/url';
+} );
+```
+
+If you need to find multiple mapping objects, you may pass callback to the `find_mappings()` method. This method will
+loop through all mappings — excluding the root and fallback mappings — and return an array of WPLK_Mapping objects that
+match the conditions set within the callback. If no matches are found, the method returns an empty array.
+
+```php
+$domain->add_mapping( 'some/url', $post_id );
+$domain->add_mapping( 'some/other/url', $post_id_2 );
+$domain->add_mapping( 'some/third/url', $post_id_3 );
+
+// Searching for any mappings that match.
+$mappings = $domain->find_mapping( function( WPLK_Mapping $mapping ){
+    if($mapping->url_path === 'some/url'){
+        return true;
+    }
+
+    if($mapping->url_path === 'some/other/url'){
+        return true;
+    }
+
+    return false;
+} );
+```
+
 ### Removing URL mappings
 
 ### Getting all URL mappings
