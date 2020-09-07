@@ -277,6 +277,8 @@ $mappings = $domain->find_mapping( function( WPLK_Mapping $mapping ){
 
     return false;
 } );
+
+count( $mappings ) === 2; // TRUE
 ```
 
 ### Removing URL mappings
