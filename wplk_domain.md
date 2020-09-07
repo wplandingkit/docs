@@ -283,6 +283,30 @@ count( $mappings ) === 2; // TRUE
 
 ### Removing URL mappings
 
-### Getting all URL mappings
+If you need to remove a mapping from a domain object, you may do so using the `remove_mapping()` method. The method
+accepts either the mapping ID, the mapping instance, or a callback to evaluate each mapping on the domain.
 
-###
+If the function successfully locates and removes a mapping, the WPLK_Mapping instance for that mapping will be returned.
+If the function cannot find a mapping to remove, it will return `FALSE`.
+
+Be mindful that this will only remove the first mapping it finds matching the criteria so if you are using a callback in
+an attempt to remove multiple, you'll need to invoke the `remove_mapping()` method for each mapping you wish to remove.
+
+```php
+$mapping1 = $domain->add_mapping( 'some/url', $post_id );
+$mapping2 = $domain->add_mapping( 'some/other/url', $post_id_2 );
+$mapping3 = $domain->add_mapping( 'some/third/url', $post_id_3 );
+
+// Locate and remove using the WPLK_Mapping instance.
+$domain->remove_mapping( $mapping1 );
+
+// Locate and remove using the mapping ID.
+$domain->remove_mapping( $mapping2->mapping_id );
+
+// Locate and remove using a callback. Returning true from the callback will remove the mapping currently being evaluated.
+$domain->remove_mapping( function( WPLK_Mapping $mapping){
+    return $mapping->url_path == 'some/third/url';
+} );
+```
+
+### Getting all URL mappings
