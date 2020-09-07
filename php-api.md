@@ -42,11 +42,7 @@ todo
 ## Objects
 
 There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These
-are included in the API and are safe to use as per these documented examples.
+are included in the API and are safe to use as per these documented examples:
 
-- [WPLK_Domain](wplk_domain-object.md) object
-- WPLK_Mapping object
-
-### WPLK_Mapping
-
-todo
+- [WPLK_Domain](wplk_domain.md) object
+- [WPLK_Mapping](wplk_mapping.md) object
