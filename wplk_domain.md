@@ -265,7 +265,7 @@ $domain->add_mapping( 'some/url', $post_id );
 $domain->add_mapping( 'some/other/url', $post_id_2 );
 $domain->add_mapping( 'some/third/url', $post_id_3 );
 
-// Searching for any mappings that match.
+// Search for any mappings that match.
 $mappings = $domain->find_mapping( function( WPLK_Mapping $mapping ){
     if($mapping->url_path === 'some/url'){
         return true;
@@ -310,3 +310,13 @@ $domain->remove_mapping( function( WPLK_Mapping $mapping){
 ```
 
 ### Getting all URL mappings
+
+You may get an array of all mappings — excluding the root and fallback mappings — by using the `mappings()` method.
+
+```php
+$mapping1 = $domain->add_mapping( 'some/url', $post_id );
+$mapping2 = $domain->add_mapping( 'some/other/url', $post_id_2 );
+$mapping3 = $domain->add_mapping( 'some/third/url', $post_id_3 );
+
+count($domain->mappings()) === 3; // TRUE
+```
