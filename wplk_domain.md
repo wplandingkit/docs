@@ -4,6 +4,12 @@
 - [Creating a new domain](#creating-a-new-domain)
 - [Retrieving an existing domain](#retrieving-an-existing-domain)
 - [Managing URL mappings](#managing-url-mappings)
+    - [Working with the root mapping](#working-with-the-root-mapping)
+    - [Working with the fallback mapping](#working-with-the-fallback-mapping)
+    - [Adding URL mappings](#adding-url-mappings)
+    - [Finding URL mappings](#finding-url-mappings)
+    - [Removing URL mappings](#removing-url-mappings)
+    - [Getting all URL mappings](#getting-all-url-mappings)
 
 ## Introduction
 
@@ -85,14 +91,36 @@ underlying domain post by title.
 
 ## Managing URL mappings
 
-There are a few object methods the enable you to add, edit, and remove, URL mappings for a domain:
+There are a few object methods the enable you to add, edit, and remove, URL mappings for a domain. Unless specified
+otherwise, these methods all accept or return one or more [WPLK_Mapping](wplk_mapping.md) objects.
 
 | Method | Description |
 |---|---|
-| mappings() | Returns an array of all dynamic mapping objects (exludes root and fallback mappings) |
+| mappings() | Returns an array of all dynamic mapping objects, excluding root and fallback mappings. |
 | add_mapping() | Add a new mapping. |
 | find_mapping() | Find a specific mapping object. |
 | find_mappings() | Find multiple mapping objects. |
 | remove_mapping() | Remove a mapping. |
 | root() | Get the root mapping object. |
 | fallback() | Get the fallback mapping object. |
+
+### Working with the root mapping
+
+The root mapping is a requirement for a domain as it specifies what should happen when a user visits the domain root.
+e.g; `http://mydomain.com/`.
+
+The `root()` method provides a number of ways to
+
+### Working with the fallback mapping
+
+todo
+
+### Adding URL mappings
+
+### Finding URL mappings
+
+### Removing URL mappings
+
+### Getting all URL mappings
+
+###
