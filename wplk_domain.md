@@ -111,21 +111,31 @@ e.g; `http://mydomain.com/`.
 
 There are a number of ways to define a root mapping
 
-1. You can simply pass a post ID to map to:
+#### Passing a post ID or WP_Post object
+
+```php
+$domain = new WPLK_Domain( 'mydomain.com' );
+$domain->root( $post );
+```
+
+#### Passing a callback
 
 ```php
 $domain = new WPLK_Domain('mydomain.com');
-$domain->root( $post_id );
+$domain->root( function( WPLK_Mapping $mapping ){
+    // Manipulate the $mapping instance
+    $mapping->maps_to_term_archive( $term_id, true );
+} );
 ```
 
-1. asfasfasdf
+_Note that when passing a callback as the first parameter, the second parameter is ignored._
 
-// Test passing an array of mapping args.
-// Test passing an array of mapping args and a callback.
-// Test passing a post ID and a callback.
-// test passing a post object and a callback.
-// Test passing just a callback.
-// Test that second param is ignored when passing callback to first.
+#### Passing an array of mapping args
+
+```php
+$domain = new WPLK_Domain( 'mydomain.com' );
+$domain->root( [ 'post_id' => $post_id ] );
+```
 
 #### A note on mapping instances
 
@@ -134,7 +144,7 @@ further configuration. If no root mapping is set, the method will create a new m
 domain. Subsequent calls without method args will return the same object.
 
 ```php
-$domain = new WPLK_Domain('mydomain.com');
+$domain = new WPLK_Domain( 'mydomain.com' );
 $mapping = $domain->root()->maps_to_post( $post_id );
 
 $mapping === $domain->root(); // TRUE (objects are the same instance)
@@ -144,7 +154,7 @@ Whenever args are passed to the `root(…$args)` method, an new mapping instance
 effectively resets the root mapping.
 
 ```php
-$domain = new WPLK_Domain('mydomain.com');
+$domain = new WPLK_Domain( 'mydomain.com' );
 $mapping = $domain->root()->maps_to_post( $post_id );
 
 // This will reset the root mapping object entirely.
