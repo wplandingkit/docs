@@ -69,6 +69,11 @@ if( is_wp_error( $saved ) ){
 }
 ```
 
+### Setting the domain owner
+
+You may choose to assign a user ID as the owner of a domain. This will effectively make the user the author of the
+underlying post.
+
 ## Retrieving an existing domain
 
 You can retrieve an instance of a domain that already stored in the database using the `WPLK_Domain::get_instance()`
