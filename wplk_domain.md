@@ -39,8 +39,8 @@ $domain->set_host( 'mydomain.com' );
 // It is also possible to use an array when instantiating a new domain object.
 $domain = new WPLK_Domain( [
     'host' => 'mydomain.com',
-    'is_active' => true, // (optional)
-    'enforced_protocol' => 'https', // (optional)
+    'owner_id' => 1234, // optional
+    'enforced_protocol' => 'https', // optional
 ] );
 ```
 
@@ -58,6 +58,7 @@ The following example is a more complete demonstration of how to create and acti
 
 ```php
 $domain = new WPLK_Domain( 'mydomain.com' );
+$domain->set_owner( 1234 );
 $domain->root()->maps_to_post( $post_id );
 $domain->activate();
 
