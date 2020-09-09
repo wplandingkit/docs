@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Creating a new domain](#creating-a-new-domain)
+    - [Setting the domain owner](#setting-the-domain-owner)
 - [Retrieving an existing domain](#retrieving-an-existing-domain)
 - [Managing URL mappings](#managing-url-mappings)
     - [Working with the root mapping](#working-with-the-root-mapping)
