@@ -83,8 +83,8 @@ You may get an existing domain using the `wplk_get_domain()` function. The funct
 if the domain is found otherwise it will return `NULL`. You can pass this function one of the following:
 
 1. The domain post ID.
-1. The domain host name. e.g; _mydomain.com_
-1. A full URL containing the domain host name. e.g; _http://mydomain.com/some/path_
+1. The domain host name. e.g; `mydomain.com`.
+1. A full URL containing the domain host name. e.g; `http://mydomain.com/some/path`.
     - In this case, the host name will be extracted from the URL. All other elements of the URL will be ignored.
 
 **Note:** The most efficient lookup is achieved using the post ID so use that if/when possible.
