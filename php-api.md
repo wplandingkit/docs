@@ -39,6 +39,10 @@ e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads trans
 registration, etc.
 
 ## Usage
+
+TODO - once we have all the examples in, let's break it all down a little more so if flows better and builds knowledge
+instead of throwing out big snippets.
+
 ### Inserting a new domain into the database
 
 You may create new domains using the `wplk_add_domain()` function. The function will return a `WPLK_Domain` object on
@@ -75,7 +79,26 @@ todo
 
 ### Getting an existing domain
 
-todo
+You may get an existing domain using the `wplk_get_domain()` function. The function will return a `WPLK_Domain` object
+if the domain is found otherwise it will return `NULL`. You can pass this function one of the following:
+
+1. The domain post ID.
+1. The domain host name. e.g; _mydomain.com_
+1. A full URL containing the domain host name. e.g; _http://mydomain.com/some/path_
+    - In this case, the host name will be extracted from the URL. All other elements of the URL will be ignored.
+
+**Note:** The most efficient lookup is achieved using the post ID so use that if/when possible.
+
+```php
+// Lookup using the domain post ID.
+$domain = wplk_get_domain( 5 );
+
+// Lookup using the domain host name:
+$domain = wplk_get_domain( 'mydomain.com' );
+
+// Lookup using a full URL containing the domain host name:
+$domain = wplk_get_domain( 'http://mydomain.com/some/path' );
+```
 
 ### Updating a domain
 
