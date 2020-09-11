@@ -41,7 +41,10 @@ registration, etc.
 ## Usage
 ### Inserting a new domain into the database
 
-You may create new domains using the `wplk_add_domain()` function. The function
+You may create new domains using the `wplk_add_domain()` function. The function will return a `WPLK_Domain` object on
+success or a `WP_Error` object when the domain is already in the database or some other failure occurs. Newly created
+domains are inactive by default — that is, they are in a `draft` status and are not actively handling requests made to
+the site.
 
 ```php
 // Create an inactive domain with no mappings.
@@ -54,6 +57,16 @@ $domain = wplk_add_domain( 'mydomain.com', $post_id );
 // Create an active domain with the domain root mapped to a post.
 $post_id = 1234;
 $domain = wplk_add_domain( 'mydomain.com', $post_id, true );
+
+// Create an active domain with an owner (user ID), an enforced protocol, and with the root mapped to a post.
+$post_id = 1234;
+$user_id = 5678;
+$domain = wplk_add_domain( 'mydomain.com', [
+    'post_id' => $post_id,
+    'owner_id' => $user_id,
+    'active' => true,
+    'enforced_protocol' => 'https',
+] );
 ```
 
 ### Checking if a domain already exists in the database
