@@ -3,8 +3,8 @@
 - [Introduction](#introduction)
 - [Usage](#usage)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
-    - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
+    - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
     - [Updating a domain](#updating-a-domain)
     - [Activating a domain](#activating-a-domain)
     - [Mapping the domain root](#mapping-the-domain-root)
@@ -74,10 +74,6 @@ $domain = wplk_add_domain( 'mydomain.com', [
 ] );
 ```
 
-### Checking if a domain already exists in the database
-
-todo
-
 ### Getting an existing domain
 
 You may get an existing domain using the `wplk_get_domain()` function. The function will return a `WPLK_Domain` object
@@ -99,6 +95,28 @@ $domain = wplk_get_domain( 'mydomain.com' );
 
 // Lookup using a full URL containing the domain host name:
 $domain = wplk_get_domain( 'http://mydomain.com/some/path' );
+```
+
+### Checking if a domain already exists in the database
+
+You may check if a domain already exists by using the `wplk_domain_exists()` function. The function will return boolean
+`TRUE` or `FALSE`. You can lookup the domain using any of the methods used in [Getting an existing domain](#getting-an-existing-domain).
+
+```php
+// Check using the domain post ID.
+if( wplk_domain_exists( 5 ) ){
+    // …
+}
+
+// Check using the domain host name:
+if( wplk_domain_exists( 'mydomain.com' ) ){
+    // …
+}
+
+// Check using a full URL containing the domain host name:
+if( wplk_domain_exists( 'http://mydomain.com/some/path' ) ){
+    // …
+}
 ```
 
 ### Updating a domain
