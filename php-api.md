@@ -1,8 +1,16 @@
 # PHP API
 
 - [Introduction](#introduction)
-- [Functions](#functions)
-- [Objects](#objects)
+- [Usage](#usage)
+    - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
+    - [Getting an existing domain](#getting-an-existing-domain)
+    - [Updating a domain](#updating-a-domain)
+    - [Activating a domain](#activating-a-domain)
+    - [Mapping the domain root](#mapping-the-domain-root)
+    - [Controlling fallback behaviour on a domain](#controlling-fallback-behaviour-on-a-domain)
+    - [Adding a URL to a domain](#adding-a-url-to-a-domain)
+    - [Removing a URL from a domain](#removing-a-url-from-a-domain)
+    - [Deleting a domain](#deleting-a-domain)
 
 ## Introduction
 
@@ -30,17 +38,63 @@ page load. Instead, it is designed to be used at strategic points as a means of 
 e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or perhaps after user
 registration, etc.
 
-## Functions
+## Usage
+### Inserting a new domain into the database
 
-| Function | Use |
-|---|---|
-| [wplk_add_domain()](functions/wplk_add_domain.md) | Add new domains to the database. |
-| [fn](functions/fn.md) |  |
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+```
 
-## Objects
+### Checking if a domain already exists in the database
 
-There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These
-are included in the API and are safe to use as per these documented examples:
+todo
 
-- [WPLK_Domain](objects/wplk_domain.md) object
-- [WPLK_Mapping](objects/wplk_mapping.md) object
+### Getting an existing domain
+
+todo
+
+### Updating a domain
+
+todo
+
+### Activating a domain
+
+todo
+
+### Mapping the domain root
+
+todo
+
+### Controlling fallback behaviour on a domain
+
+todo
+
+### Adding a URL to a domain
+
+todo
+
+### Removing a URL from a domain
+
+todo
+
+### Deleting a domain
+
+todo
+
+
+
+<!-- todo - Focus on getting basic guides in place (enough for people to get started) then add in technical docs for each function  -->
+<!-- ## Functions -->
+
+<!-- | Function | Use | -->
+<!-- |---|---| -->
+<!-- | [wplk_add_domain()](functions/wplk_add_domain.md) | Add new domains to the database. | -->
+<!-- | [fn](functions/fn.md) |  | -->
+
+<!-- ## Objects -->
+
+<!-- There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These -->
+<!-- are included in the API and are safe to use as per these documented examples: -->
+
+<!-- - [WPLK_Domain](objects/wplk_domain.md) object -->
+<!-- - [WPLK_Mapping](objects/wplk_mapping.md) object -->
