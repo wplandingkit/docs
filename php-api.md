@@ -87,7 +87,7 @@ if the domain is found otherwise it will return `NULL`. You can pass this functi
 1. A full URL containing the domain host name. e.g; _http://mydomain.com/some/path_
     - In this case, the host name will be extracted from the URL. All other elements of the URL will be ignored.
 
-> **Note:** The most efficient lookup is achieved using the post ID so use that if/when possible.
+**Note:** The most efficient lookup is achieved using the post ID so use that if/when possible.
 
 ```php
 // Lookup using the domain post ID.
