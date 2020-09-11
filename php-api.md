@@ -44,7 +44,7 @@ registration, etc.
 You may create new domains using the `wplk_add_domain()` function. The function will return a `WPLK_Domain` object on
 success or a `WP_Error` object when the domain is already in the database or some other failure occurs. Newly created
 domains are inactive by default — that is, they are in a `draft` status and are not actively handling requests made to
-the site.
+the site. See _[Activating a domain](#activating-a-domain)_.
 
 ```php
 // Create an inactive domain with no mappings.
