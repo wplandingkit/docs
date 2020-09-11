@@ -14,7 +14,16 @@ The domain host name or a full URL containing the host name.
 
 **$config** _(int|array) (Optional)_
 
-A post ID or an array of settings.
+A post ID or an array of settings. If passing an array:
+
+- `'post_id'`
+  _(int) (optional)_ The ID of the post that renders at the root of the domain.
+- `'owner_id'`
+  _(int) (optional)_ The ID of the user that owns this domain. This is the domain post author.
+- `'active'`
+  _(boolean) (optional)_ Whether or not to activate this domain. Note: fails if no `post_id` is available.
+- `'enforced_protocol'`
+  _(int) (optional)_ The protocol to enforce on this domain.
 
 **$active** _(boolean) (Optional)_
 
