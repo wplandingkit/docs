@@ -32,8 +32,10 @@ registration, etc.
 
 ## Functions
 
-- [wplk_add_domain()](functions/wplk_add_domain.md)
-- [fn](functions/fn.md)
+| Function | Use |
+|---|---|
+| [wplk_add_domain()](functions/wplk_add_domain.md) | Add new domains to the database. |
+| [fn](functions/fn.md) |  |
 
 ## Objects
 
