@@ -8,15 +8,15 @@ The function inserts new domains into the database.
 
 ## Parameters
 
-`$domain_name` _(string) (Required)_
+**$domain_name** _(string) (Required)_
 
 The domain host name or a full URL containing the host name.
 
-`$config` _(int|array) (Optional)_
+**$config** _(int|array) (Optional)_
 
 A post ID or an array of settings.
 
-`$active` _(boolean) (Optional)_
+**$active** _(boolean) (Optional)_
 
 Whether or not the domain is currently active (published).
 
