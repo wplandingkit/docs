@@ -32,7 +32,9 @@ registration, etc.
 
 ## Functions
 
-todo
+### Adding new domains
+
+New domains may be added using the `wplk_add_domain()` function.
 
 ## Objects
 
