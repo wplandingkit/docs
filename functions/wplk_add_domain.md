@@ -16,13 +16,17 @@ The function inserts new domains into the database.
 
 ## Return
 
-Returns WPLK_Domain object on success or a WP_Error object on failure.
+Returns `WPLK_Domain` object on success or a `WP_Error` object on failure.
 
 ## Examples
 
 ```php
 $home_post_id = 1234;
-$domain = wplk_add_domain('mydomain.com', $home_post_id );
+$domain = wplk_add_domain( 'mydomain.com', $home_post_id );
+
+if( is_wp_error( $domain ) ){
+    // do something with $domain->get_error_message()
+}
 ```
 
 ## Notes
