@@ -26,13 +26,46 @@ Returns `WPLK_Domain` object on success or a `WP_Error` object on failure.
 
 ## Examples
 
-```php
-$home_post_id = 1234;
-$domain = wplk_add_domain( 'mydomain.com', $home_post_id );
+### Adding a domain with no config
 
-if( is_wp_error( $domain ) ){
-    // do something with $domain->get_error_message()
-}
+In this example, the domain cannot be activated yet as it doesn't have a root mapping.
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+```
+
+To add a root mapping to the created domain before activating it, consider the following:
+
+```php
+$post_id = 1234;
+$domain = wplk_add_domain( 'mydomain.com' );
+$domain->root()->maps_to_post( 1234 );
+$domain->activate();
+$domain->save();
+```
+
+### Adding a domain and mapping the root to a post/page
+
+When a domain has a root mapping — in this case, a post ID — the domain can be activated on creation.
+
+```php
+$post_id = 1234;
+$domain = wplk_add_domain( 'mydomain.com', $post_id, true );
+```
+
+### Adding a domain with additional settings
+
+You may pass an array as the second parameter for more control. e.g;
+
+```php
+$post_id = 1234;
+$user_id = 5678;
+$domain = wplk_add_domain( 'mydomain.com', [
+    'post_id' => $post_id,
+    'owner_id' => $user_id,
+    'active' => true,
+    'enforced_protocol' => 'https',
+] );
 ```
 
 ## Notes
