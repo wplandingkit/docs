@@ -121,7 +121,18 @@ if( wplk_domain_exists( 'http://mydomain.com/some/path' ) ){
 
 ### Updating a domain
 
-todo
+To save any changes made on a `WPLK_Domain` object to the database, you may pass the object to the `wplk_update_domain()`
+function. The function will return the domain post ID on success or a `WP_Error` object on failure.
+
+```php
+$domain = wplk_get_domain('mydomain.com');
+
+$saved = wplk_update_domain( $domain );
+
+if( is_wp_error( $saved ) ){
+    // handle errors…
+}
+```
 
 ### Activating a domain
 
