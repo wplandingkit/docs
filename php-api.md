@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Usage](#usage)
+    - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
     - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
     - [Updating a domain](#updating-a-domain)
