@@ -1,4 +1,6 @@
-`wplk_add_domain( $domain_name [, $config = [] [, $active = false ]] )`
+```php
+wplk_add_domain( $domain_name [, $config = [] [, $active = false ]] )
+```
 
 ## Description
 
@@ -8,9 +10,9 @@ The function inserts new domains into the database.
 
 | Parameter | Type/s | Description |
 |---|---|---|
-| $domain_name | _string_ | The domain host name or a full URL containing the host name. |
-| $config | _int_|_array_ | A post ID or an array of settings. |
-| $active | _boolean_ | Whether or not the domain is currently active (published). |
+| `$domain_name` | _string_ | The domain host name or a full URL containing the host name. |
+| `$config` | _int_\|_array_ | A post ID or an array of settings. |
+| `$active` | _boolean_ | Whether or not the domain is currently active (published). |
 
 ## Return
 
