@@ -32,14 +32,13 @@ registration, etc.
 
 ## Functions
 
-### Adding new domains
-
-New domains may be added using the `wplk_add_domain()` function.
+- [wplk_add_domain()](functions/wplk_add_domain.md)
+- [fn](functions/fn.md)
 
 ## Objects
 
 There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These
 are included in the API and are safe to use as per these documented examples:
 
-- [WPLK_Domain](wplk_domain.md) object
-- [WPLK_Mapping](wplk_mapping.md) object
+- [WPLK_Domain](objects/wplk_domain.md) object
+- [WPLK_Mapping](objects/wplk_mapping.md) object
