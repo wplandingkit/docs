@@ -8,26 +8,26 @@ The function inserts new domains into the database.
 
 ## Parameters
 
-**$domain_name** _(string) (Required)_
+**$domain_name**
 
-The domain host name or a full URL containing the host name.
+_(string) (Required)_ The domain host name or a full URL containing the host name.
 
-**$config** _(int|array) (Optional)_
+**$config**
 
-A post ID or an array of settings. If passing an array:
+_(int|array) (Optional)_ A post ID or an array of settings. If passing an array:
 
-- `'post_id'` <br>
+- **`'post_id'`** <br>
   _(int) (optional)_ The ID of the post that renders at the root of the domain.
-- `'owner_id'` <br>
+- **`'owner_id'`** <br>
   _(int) (optional)_ The ID of the user that owns this domain. This is the domain post author.
-- `'active'` <br>
+- **`'active'`** <br>
   _(boolean) (optional)_ Whether or not to activate this domain. Note: fails if no `post_id` is available.
-- `'enforced_protocol'` <br>
+- **`'enforced_protocol'`** <br>
   _(int) (optional)_ The protocol to enforce on this domain.
 
-**$active** _(boolean) (Optional)_
+**$active**
 
-Whether or not the domain is currently active (published).
+_(boolean) (Optional)_ Whether or not the domain is currently active (published).
 
 ## Return
 
