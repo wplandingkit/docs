@@ -204,7 +204,8 @@ $domain->add_mapping( 'some/url', get_post( $post_id ) );
 
 // Use a callback to configure the mapping object.
 $domain->add_mapping( function( WPLK_Mapping $mapping){
-    $mapping->set_url_path( 'some/url' )->maps_to_post( $post_id );
+    $mapping->set_url_path( 'some/url' );
+    $mapping->maps_to_post( $post_id );
 } );
 
 // Use RegEx in the URL.
