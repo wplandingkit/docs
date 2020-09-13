@@ -5,6 +5,7 @@
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
     - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
+    - [Checking if an existing domain is active](#checking-if-an-existing-domain-is-active)
     - [Updating a domain](#updating-a-domain)
     - [Activating a domain](#activating-a-domain)
     - [Mapping the domain root](#mapping-the-domain-root)
@@ -108,15 +109,47 @@ if( wplk_domain_exists( 5 ) ){
     // …
 }
 
-// Check using the domain host name:
+// Check using the domain host name.
 if( wplk_domain_exists( 'mydomain.com' ) ){
     // …
 }
 
-// Check using a full URL containing the domain host name:
+// Check using a full URL containing the domain host name.
 if( wplk_domain_exists( 'http://mydomain.com/some/path' ) ){
     // …
 }
+```
+
+### Checking if an existing domain is active
+
+You may check if an existing domain is active using the `wplk_domain_is_active()` function. The function can accept
+either the domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The
+function will return boolean `TRUE` or `FALSE` if the domain exists. IF the domain cannot be found, a `WP_Error` object
+will be returned.
+
+```php
+// Check using the domain post ID.
+if( wplk_domain_is_active( 5 ) ){
+    // …
+}
+
+// Check using the domain host name.
+if( wplk_domain_is_active( 'mydomain.com' ) ){
+    // …
+}
+
+// Check using a full URL containing the domain host name.
+if( wplk_domain_is_active( 'http://mydomain.com/some/path' ) ){
+    // …
+}
+
+// Check using a WPLK_Domain instance.
+$domain = wplk_get_domain( 'mydomain.com' );
+if( $domain and wplk_domain_is_active( $domain ) ){
+    // …
+}
+
+
 ```
 
 ### Updating a domain
@@ -125,7 +158,7 @@ To save any changes made on a `WPLK_Domain` object to the database, you may pass
 function. The function will return the domain post ID on success or a `WP_Error` object on failure.
 
 ```php
-$domain = wplk_get_domain('mydomain.com');
+$domain = wplk_get_domain( 'mydomain.com' );
 
 $saved = wplk_update_domain( $domain );
 
