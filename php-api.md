@@ -8,6 +8,7 @@
     - [Checking if an existing domain is active](#checking-if-an-existing-domain-is-active)
     - [Updating a domain](#updating-a-domain)
     - [Activating a domain](#activating-a-domain)
+    - [Deactivating a domain](#deactivating-a-domain)
     - [Mapping the domain root](#mapping-the-domain-root)
     - [Controlling fallback behaviour on a domain](#controlling-fallback-behaviour-on-a-domain)
     - [Adding a URL to a domain](#adding-a-url-to-a-domain)
@@ -148,8 +149,6 @@ $domain = wplk_get_domain( 'mydomain.com' );
 if( $domain and wplk_domain_is_active( $domain ) ){
     // …
 }
-
-
 ```
 
 ### Updating a domain
@@ -160,6 +159,8 @@ function. The function will return the domain post ID on success or a `WP_Error`
 ```php
 $domain = wplk_get_domain( 'mydomain.com' );
 
+// …make changes on the WPLK_Domain instance here…
+
 $saved = wplk_update_domain( $domain );
 
 if( is_wp_error( $saved ) ){
@@ -169,7 +170,49 @@ if( is_wp_error( $saved ) ){
 
 ### Activating a domain
 
-todo
+If a domain is eligible for activation, you may activate it using the `wplk_activate_domain()` function. The function
+can accept either the domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance.
+The function will return boolean `TRUE` on success or a `WP_Error` object where activation cannot be handled.
+
+```php
+// Activate using the domain post ID.
+wplk_activate_domain( 5 );
+
+// Activate using the domain host name.
+wplk_activate_domain( 'mydomain.com' );
+
+// Activate using a full URL containing the domain host name.
+wplk_activate_domain( 'http://mydomain.com/some/path' );
+
+// Activate using a WPLK_Domain instance.
+$domain = wplk_get_domain( 'mydomain.com' );
+if( $domain ){
+    wplk_activate_domain( $domain );
+}
+```
+
+### Deactivating a domain
+
+You may deactivate a domain using the `wplk_deactivate_domain()` function. The function can accept either the domain ID,
+the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The function will return boolean
+`TRUE` on success or a `WP_Error` object where activation cannot be handled.
+
+```php
+// Deactivate using the domain post ID.
+wplk_deactivate_domain( 5 );
+
+// Deactivate using the domain host name.
+wplk_deactivate_domain( 'mydomain.com' );
+
+// Deactivate using a full URL containing the domain host name.
+wplk_deactivate_domain( 'http://mydomain.com/some/path' );
+
+// Deactivate using a WPLK_Domain instance.
+$domain = wplk_get_domain( 'mydomain.com' );
+if( $domain ){
+    wplk_deactivate_domain( $domain );
+}
+```
 
 ### Mapping the domain root
 
