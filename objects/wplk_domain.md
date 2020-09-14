@@ -98,7 +98,7 @@ underlying domain post by title.
 
 ## Managing URL mappings
 
-There are a few object methods the enable you to add, edit, and remove, URL mappings for a domain. Unless specified
+There are a few object methods the enable you to add, edit, and remove URL mappings for a domain. Unless specified
 otherwise, these methods all accept or return one or more [WPLK_Mapping](wplk_mapping.md) objects.
 
 | Method | Description |
