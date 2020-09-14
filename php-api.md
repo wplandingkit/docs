@@ -12,7 +12,6 @@
     - [Mapping the domain root](#mapping-the-domain-root)
     - [Controlling fallback behaviour on a domain](#controlling-fallback-behaviour-on-a-domain)
     - [Adding a URL to a domain](#adding-a-url-to-a-domain)
-    - [Removing a URL from a domain](#removing-a-url-from-a-domain)
     - [Deleting a domain](#deleting-a-domain)
 
 ## Introduction
@@ -42,9 +41,6 @@ e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads trans
 registration, etc.
 
 ## Usage
-
-TODO - once we have all the examples in, let's break it all down a little more so if flows better and builds knowledge
-instead of throwing out big snippets.
 
 ### Inserting a new domain into the database
 
@@ -216,38 +212,77 @@ if( $domain ){
 
 ### Mapping the domain root
 
-todo
+The domain root mapping is essential to the domain as it specifies what to load when a user visits the domain without
+any URL path. e.g; `http://mydomain.com/`. Without the root mapping, a domain cannot be activated.
+
+If the domain root should map to a post, you may specify the root mapping by passing the post ID to the
+`wplk_add_domain()` function like so;
+
+```php
+wplk_add_domain( 'mydomain.com', $post_id );
+```
+
+For more examples of this shorthand approach, see [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database).
+
+Alternatively, you may choose to map the domain root to a taxonomy term archive, a post type archive, or even redirect
+the domain root to a different URL entirely. To do so, you may chain method calls off the `root()` method which returns
+a `WPLK_Mapping` object. Consider the following examples:
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+
+// Map the root to a post using either a post ID or WP_Post object.
+$domain->root()->maps_to_post( $post );
+
+// Map the root to a taxonomy term archive using either a term ID or WP_Term object.
+$support_pagination = true;
+$domain->root()->maps_to_term_archive( $term, $support_pagination );
+
+// Map the root to a post type archive using a post type slug.
+$support_pagination = true;
+$domain->root()->maps_to_post_type_archive( 'my_post_type_slug', $support_pagination );
+
+// Redirect the root.
+$domain->root()->redirects_to( 'http://somesite.com', '302' );
+```
+
+For more information about managing root mappings, see [working with the root mapping](wplk_domain.md#working-with-the-root-mapping).
 
 ### Controlling fallback behaviour on a domain
 
-todo
+The fallback mapping on domain is used when an incoming request cannot be matched to any other mapping set up on a
+domain. By default, the fallback behaviour of a domain will redirect to the domain root with a HTTP status of 302. You
+may override the default behaviour in order to map the fallback to any post, post type archive, taxonomy term archive,
+or to redirect to a URL of your choice. To do so, you may chain method calls off the `fallback()` method which returns
+a `WPLK_Mapping` object. Consider the following examples:
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+
+// Map the root to a post using either a post ID or WP_Post object.
+$domain->fallback()->maps_to_post( $post );
+
+// Map the root to a taxonomy term archive using either a term ID or WP_Term object.
+$support_pagination = true;
+$domain->fallback()->maps_to_term_archive( $term, $support_pagination );
+
+// Map the root to a post type archive using a post type slug.
+$support_pagination = true;
+$domain->fallback()->maps_to_post_type_archive( 'my_post_type_slug', $support_pagination );
+
+// Redirect the root.
+$domain->fallback()->redirects_to( 'http://somesite.com', '302' );
+```
+
+### Adding mappings to a domain
+
+If a domain needs more than just a root mapping, you may add any number of mappings to a domain using the `add_mapping()`
+method on the `WPLK_Domain` instance. A simple example
 
 ### Adding a URL to a domain
-
-todo
-
-### Removing a URL from a domain
 
 todo
 
 ### Deleting a domain
 
 todo
-
-
-
-<!-- todo - Focus on getting basic guides in place (enough for people to get started) then add in technical docs for each function  -->
-<!-- ## Functions -->
-
-<!-- | Function | Use | -->
-<!-- |---|---| -->
-<!-- | [wplk_add_domain()](functions/wplk_add_domain.md) | Add new domains to the database. | -->
-<!-- | [fn](functions/fn.md) |  | -->
-
-<!-- ## Objects -->
-
-<!-- There are a few underlying objects used by the API functions which you may use if you prefer to work with objects. These -->
-<!-- are included in the API and are safe to use as per these documented examples: -->
-
-<!-- - [WPLK_Domain](objects/wplk_domain.md) object -->
-<!-- - [WPLK_Mapping](objects/wplk_mapping.md) object -->
