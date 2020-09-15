@@ -40,6 +40,8 @@ page load. Instead, it is designed to be used at strategic points as a means of 
 e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or perhaps after user
 registration, etc.
 
+## TODO - QUICKSTART
+
 ## Usage
 
 ### Inserting a new domain into the database
