@@ -306,10 +306,28 @@ $mapping->redirects_to( 'http://example.com' );
 The `add_mapping()` method actually provides a number of alternative ways to create and configure mappings which
 demonstrated in [WPLK_Mapping > Adding URL mappings](wplk_domain.md#adding-url-mappings)
 
-### Adding a URL to a domain
-
-todo
-
 ### Deleting a domain
+
+You may delete a domain from the database using the `wplk_delete_domain()` function. The function can accept either the
+domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The function will
+return boolean `TRUE` if the domain was deleted or a `WP_Error` object if the domain could not be found or could not be
+deleted.
+
+```php
+// Delete using the domain post ID.
+wplk_delete_domain( 5 ;
+
+// Delete using the domain host name.
+wplk_delete_domain( 'mydomain.com' );
+
+// Delete using a full URL containing the domain host name.
+wplk_delete_domain( 'http://mydomain.com/some/path' );
+
+// Delete using a WPLK_Domain instance.
+$domain = wplk_get_domain( 'mydomain.com' );
+wplk_delete_domain( $domain );
+```
+
+### Adding a URL to a domain
 
 todo
