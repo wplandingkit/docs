@@ -246,7 +246,7 @@ $domain->root()->maps_to_post_type_archive( 'my_post_type_slug', $support_pagina
 $domain->root()->redirects_to( 'http://somesite.com', '302' );
 ```
 
-For more information about managing root mappings, see [working with the root mapping](wplk_domain.md#working-with-the-root-mapping).
+For more information about managing root mappings, see [WPLK_Domain > Working with the root mapping](wplk_domain.md#working-with-the-root-mapping).
 
 ### Controlling fallback behaviour on a domain
 
@@ -277,7 +277,34 @@ $domain->fallback()->redirects_to( 'http://somesite.com', '302' );
 ### Adding mappings to a domain
 
 If a domain needs more than just a root mapping, you may add any number of mappings to a domain using the `add_mapping()`
-method on the `WPLK_Domain` instance. A simple example
+method on the `WPLK_Domain` instance. When invoked, the method creates a `WPLK_Mapping` object, adds it to the
+`WPLK_Domain` object, and returns the mapping object for further configuration. Consider the following examples:
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+
+// Map a path to a post using either a post ID or a WP_Post object.
+$domain->add_mapping( 'some/path', $post );
+
+// Map a path to a post using either a post ID or a WP_Post object using a chained method call.
+$domain->add_mapping( 'some/path' )->maps_to_post( $post );
+
+// Map a path to a taxonomy term archive using either a term ID or WP_Term object.
+$support_pagination = true;
+$domain->add_mapping( 'some/path' )->maps_to_term_archive( $term, $support_pagination );
+
+// Map a path to a post type archive using the post type slug.
+$support_pagination = true;
+$domain->add_mapping( 'some/path' )->maps_to_post_type_archive( 'my_post_type_slug', $support_pagination );
+
+// Perform multiple operations on the mapping object.
+$mapping = $domain->add_mapping();
+$mapping->set_url_path( 'some/path' );
+$mapping->redirects_to( 'http://example.com' );
+```
+
+The `add_mapping()` method actually provides a number of alternative ways to create and configure mappings which
+demonstrated in [WPLK_Mapping > Adding URL mappings](wplk_domain.md#adding-url-mappings)
 
 ### Adding a URL to a domain
 
