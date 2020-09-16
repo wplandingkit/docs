@@ -191,7 +191,7 @@ if( wplk_domain_exists( 'http://mydomain.com/some/path' ) ){
 
 You may check if an existing domain is active using the `wplk_domain_is_active()` function. The function can accept
 either the domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The
-function will return boolean `TRUE` or `FALSE` if the domain exists. IF the domain cannot be found, a `WP_Error` object
+function will return boolean `TRUE` or `FALSE` if the domain exists. If the domain cannot be found, a `WP_Error` object
 will be returned.
 
 ```php
