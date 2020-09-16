@@ -407,7 +407,7 @@ deleted.
 
 ```php
 // Delete using the domain post ID.
-wplk_delete_domain( 5 ;
+wplk_delete_domain( 5 );
 
 // Delete using the domain host name.
 wplk_delete_domain( 'mydomain.com' );
