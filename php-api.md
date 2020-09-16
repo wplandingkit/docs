@@ -367,6 +367,24 @@ for simple mappings only.
 Also worth noting is that the function will return a `WP_Error` if the URL contains no path — the function will not
 handle root mappings.
 
+#### Using this in conjunction with a `WPLK_Domain` object
+
+You may use this function alongside a domain object if you wish as the `wplk_add_url()` function will operate on the
+same domain instance under the hood. e.g;
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+$domain->add_mapping( 'page/a' )->maps_to_post( 4 );
+wplk_add_url( 'mydomain.com/page/b', 5 );
+wplk_add_url( 'mydomain.com/page/c', 6 );
+$domain->save();
+
+echo count( $domain->mappings() ); // This will return 3 mappings.
+```
+
+Be mindful, however, that this will result in more calls to the database as the `wplk_add_url()` function is saving the
+changes as it runs. The above example would result in _four_ update calls.
+
 ### Adding mappings to a domain
 
 If a domain needs more than just a root mapping, you may add any number of mappings to a domain using the `add_mapping()`
