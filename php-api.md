@@ -396,7 +396,7 @@ $mapping->redirects_to( 'http://example.com' );
 ```
 
 The `add_mapping()` method actually provides a number of alternative ways to create and configure mappings which
-demonstrated in [WPLK_Mapping > Adding URL mappings](wplk_domain.md#adding-url-mappings)
+demonstrated in [WPLK_Domain > Adding URL mappings](wplk_domain.md#adding-url-mappings)
 
 ### Deleting a domain
 
