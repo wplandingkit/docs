@@ -11,7 +11,8 @@
     - [Deactivating a domain](#deactivating-a-domain)
     - [Mapping the domain root](#mapping-the-domain-root)
     - [Controlling fallback behaviour on a domain](#controlling-fallback-behaviour-on-a-domain)
-    - [Adding a URL to a domain](#adding-a-url-to-a-domain)
+    - [Mapping full URLs](#mapping-full-urls)
+    - [Adding mappings to a domain](#adding-mappings-to-a-domain)
     - [Deleting a domain](#deleting-a-domain)
 
 ## Introduction
@@ -276,6 +277,29 @@ $domain->fallback()->maps_to_post_type_archive( 'my_post_type_slug', $support_pa
 $domain->fallback()->redirects_to( 'http://somesite.com', '302' );
 ```
 
+### Mapping full URLs
+
+If you simply need to map a full URL to a post or a taxonomy term archive, you may do so using the `wplk_add_url()`
+function. The function expects a full URL (must contain the domain host name) along with a resource to map to. The
+resource can be either a post ID, a `WP_Post` object, or a `WP_Term` object. The function will determine and find the
+domain, then map the path to the given resource. The function will return either the `WPLK_Domain` object or a
+`WP_Error` object where it could not map the URL.
+
+```php
+$domain = wplk_add_domain( 'mydomain.com' );
+
+wplk_add_url( 'mydomain.com/some/page', $post_id );
+wplk_add_url( 'http://mydomain.com/some/other/page', $post );
+wplk_add_url( 'https://mydomain.com/some/term', $term );
+```
+
+Be mindful that this function does not handle RegEx based URLs and does not offer the same level of control when using
+the methods outlined in [Adding mappings to a domain](#adding-mappings-to-a-domain). This function is one of convenience
+for simple mappings only.
+
+Also worth noting is that the function will return a `WP_Error` if the URL contains no path — the function will not
+handle root mappings.
+
 ### Adding mappings to a domain
 
 If a domain needs more than just a root mapping, you may add any number of mappings to a domain using the `add_mapping()`
@@ -329,7 +353,3 @@ wplk_delete_domain( 'http://mydomain.com/some/path' );
 $domain = wplk_get_domain( 'mydomain.com' );
 wplk_delete_domain( $domain );
 ```
-
-### Adding a URL to a domain
-
-todo
