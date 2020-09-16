@@ -1,6 +1,7 @@
 # PHP API
 
 - [Introduction](#introduction)
+- [QUICKSTART](#quickstart)
 - [Usage](#usage)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
@@ -41,7 +42,73 @@ page load. Instead, it is designed to be used at strategic points as a means of 
 e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or perhaps after user
 registration, etc.
 
-## TODO - QUICKSTART
+## QUICKSTART
+
+The PHP API is included in the plugin from version 1.2.0 and you do not need to install or include anything to start
+using it.
+
+### A simple example — mapping a domain to a page
+
+If all you need to do is map a domain to a post/page, you may do so as per the following example:
+
+```php
+// Add the domain, map it to a post ID, and make it active.
+$domain = wplk_add_domain( 'mydomain.com', 5, true );
+
+if( is_wp_error( $domain ) ){
+    // Error message can be accessed here using $domain->get_error_message()
+}
+```
+
+### Adding a domain and a few simple mappings
+
+Building on the previous example, you may need to also map a number of URLs to either posts or term archive pages. You
+may do so as per the following example:
+
+```php
+$domain = wplk_add_domain( 'mydomain.com', 5, true );
+
+// If domain creation went off without issue, map some URLs.
+if ( ! is_wp_error( $domain ) ) {
+    wplk_add_url( 'mydomain.com/about', 6 );
+    wplk_add_url( 'mydomain.com/contact', 11 );
+    wplk_add_url( 'mydomain.com/terms', 987 );
+    wplk_add_url( 'mydomain.com/projects/all', get_category_by_slug( 'projects' ) );
+} else {
+    // Error message can be accessed here using $domain->get_error_message()
+}
+```
+
+### A complex example — using chained methods for complex mappings
+
+If you need more control over your mappings and domain settings, you may use the methods provided to you by the
+`WPLK_Domain` and `WPLK_Mapping` objects as per the following example:
+
+```php
+$domain = wplk_add_domain( 'mapped-domain-3.test' );
+
+	if ( ! is_wp_error( $domain ) ) {
+		// Map the domain root to a post by ID. Note the possibility of a WP_Error object here to handle.
+		$domain->root()->maps_to_post( 5 );
+
+		// Map some URL paths to resources. Note the possibility of WP_Error objects here to handle.
+		$domain->add_mapping( 'about' )->maps_to_post( 6 );
+		$domain->add_mapping( 'contact' )->maps_to_post( 11 );
+		$domain->add_mapping( 'terms' )->maps_to_post( 987 );
+		$domain->add_mapping( 'projects/all' )->maps_to_term_archive( get_category_by_slug( 'projects' ) );
+		$domain->add_mapping( 'people' )->maps_to_post_type_archive( 'person' );
+
+		// Change the fallback handling to redirect to a custom URL.
+		$domain->fallback()->redirects_to( 'http://example.com', 302 );
+
+		// Activate and save the domain. Note the possibility of WP_Error objects here to handle.
+		$domain->activate();
+		$domain->save();
+
+	} else {
+		// Error message can be accessed here using $domain->get_error_message()
+	}
+```
 
 ## Usage
 
