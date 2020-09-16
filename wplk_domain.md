@@ -319,7 +319,8 @@ $domain->remove_mapping( function( WPLK_Mapping $mapping){
 
 ### Getting all URL mappings
 
-You may get an array of all mappings — excluding the root and fallback mappings — by using the `mappings()` method.
+You may get an array of all mappings — excluding the root and fallback mappings — by using the `mappings()` method. The
+method will return an array of `WPLK_Mapping` objects.
 
 ```php
 $mapping1 = $domain->add_mapping( 'some/url', $post_id );
