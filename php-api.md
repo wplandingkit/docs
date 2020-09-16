@@ -88,6 +88,7 @@ If you need more control over your mappings and domain settings, you may use the
 $domain = wplk_add_domain( 'mapped-domain-3.test' );
 
 if ( ! is_wp_error( $domain ) ) {
+
     // Map the domain root to a post by ID. Note the possibility of a WP_Error object here to handle.
     $domain->root()->maps_to_post( 5 );
 
