@@ -286,8 +286,7 @@ domain, then map the path to the given resource. The function will return either
 `WP_Error` object where it could not map the URL.
 
 ```php
-$domain = wplk_add_domain( 'mydomain.com' );
-
+wplk_add_domain( 'mydomain.com' );
 wplk_add_url( 'mydomain.com/some/page', $post_id );
 wplk_add_url( 'http://mydomain.com/some/other/page', $post );
 wplk_add_url( 'https://mydomain.com/some/term', $term );
