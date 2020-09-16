@@ -1,8 +1,8 @@
 # PHP API
 
 - [Introduction](#introduction)
-- [QUICKSTART](#quickstart)
-- [Usage](#usage)
+- [Quickstart](#quickstart)
+- [Usage Guide](#usage-guide)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
     - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
@@ -42,7 +42,7 @@ page load. Instead, it is designed to be used at strategic points as a means of 
 e.g; You may choose to run this after a WooCommerce/Easy Digital Downloads transaction or perhaps after user
 registration, etc.
 
-## QUICKSTART
+## Quickstart
 
 The PHP API is included in the plugin from version 1.2.0 and you do not need to install or include anything to start
 using it.
@@ -110,7 +110,7 @@ if ( ! is_wp_error( $domain ) ) {
 }
 ```
 
-## Usage
+## Usage Guide
 
 ### Inserting a new domain into the database
 
