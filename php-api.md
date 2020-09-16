@@ -87,27 +87,27 @@ If you need more control over your mappings and domain settings, you may use the
 ```php
 $domain = wplk_add_domain( 'mapped-domain-3.test' );
 
-	if ( ! is_wp_error( $domain ) ) {
-		// Map the domain root to a post by ID. Note the possibility of a WP_Error object here to handle.
-		$domain->root()->maps_to_post( 5 );
+if ( ! is_wp_error( $domain ) ) {
+    // Map the domain root to a post by ID. Note the possibility of a WP_Error object here to handle.
+    $domain->root()->maps_to_post( 5 );
 
-		// Map some URL paths to resources. Note the possibility of WP_Error objects here to handle.
-		$domain->add_mapping( 'about' )->maps_to_post( 6 );
-		$domain->add_mapping( 'contact' )->maps_to_post( 11 );
-		$domain->add_mapping( 'terms' )->maps_to_post( 987 );
-		$domain->add_mapping( 'projects/all' )->maps_to_term_archive( get_category_by_slug( 'projects' ) );
-		$domain->add_mapping( 'people' )->maps_to_post_type_archive( 'person' );
+    // Map some URL paths to resources. Note the possibility of WP_Error objects here to handle.
+    $domain->add_mapping( 'about' )->maps_to_post( 6 );
+    $domain->add_mapping( 'contact' )->maps_to_post( 11 );
+    $domain->add_mapping( 'terms' )->maps_to_post( 987 );
+    $domain->add_mapping( 'projects/all' )->maps_to_term_archive( get_category_by_slug( 'projects' ) );
+    $domain->add_mapping( 'people' )->maps_to_post_type_archive( 'person' );
 
-		// Change the fallback handling to redirect to a custom URL.
-		$domain->fallback()->redirects_to( 'http://example.com', 302 );
+    // Change the fallback handling to redirect to a custom URL.
+    $domain->fallback()->redirects_to( 'http://example.com', 302 );
 
-		// Activate and save the domain. Note the possibility of WP_Error objects here to handle.
-		$domain->activate();
-		$domain->save();
+    // Activate and save the domain. Note the possibility of WP_Error objects here to handle.
+    $domain->activate();
+    $domain->save();
 
-	} else {
-		// Error message can be accessed here using $domain->get_error_message()
-	}
+} else {
+    // Error message can be accessed here using $domain->get_error_message()
+}
 ```
 
 ## Usage
