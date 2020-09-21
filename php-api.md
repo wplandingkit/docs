@@ -15,6 +15,9 @@
     - [Mapping full URLs](#mapping-full-urls)
     - [Adding mappings to a domain](#adding-mappings-to-a-domain)
     - [Deleting a domain](#deleting-a-domain)
+- [Integration Examples](#integration-examples)
+    - [Create a domain on WooCommerce transaction](#create-a-domain-on-woo-commerce-transaction)
+    - [Create a domain on Easy Digital Downloads (EDD) transaction](#create-a-domain-on-easy-digital-downloads-edd-transaction)
 
 ## Introduction
 
@@ -438,3 +441,15 @@ wplk_delete_domain( 'http://mydomain.com/some/path' );
 $domain = wplk_get_domain( 'mydomain.com' );
 wplk_delete_domain( $domain );
 ```
+
+## Integration Examples
+
+TODO
+
+### Create a domain on WooCommerce transaction
+
+TODO
+
+### Create a domain on Easy Digital Downloads (EDD) transaction
+
+TODO
