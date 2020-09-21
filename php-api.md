@@ -16,8 +16,8 @@
     - [Adding mappings to a domain](#adding-mappings-to-a-domain)
     - [Deleting a domain](#deleting-a-domain)
 - [Integration Examples](#integration-examples)
-    - [Create a domain on WooCommerce transaction](#create-a-domain-on-woo-commerce-transaction)
-    - [Create a domain on Easy Digital Downloads (EDD) transaction](#create-a-domain-on-easy-digital-downloads-edd-transaction)
+    - [Create domains on WooCommerce transactions](#create-domains-on-woocommerce-transactions)
+    - [Create domains on Easy Digital Downloads (EDD) transactions](#create-domains-on-easy-digital-downloads-edd-transactions)
 
 ## Introduction
 
