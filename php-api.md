@@ -112,7 +112,9 @@ if ( ! is_wp_error( $domain ) ) {
 
 ## Usage Guide
 
-The following sections outline, in a little more detail, the various ways to create and manipulate domains via the API. Be mindful that domains that have been moved to the trash are considered non-existent and cannot be retrieved using the API functions.
+The following sections outline in a little more detail the various ways to create and manipulate domains via the API. 
+
+Be mindful that domains that have been moved to the trash are considered non-existent and cannot be retrieved using the API functions. This should ensure that trashed domains do not interfere with the creation of new domains using the same host name.
 
 ### Inserting a new domain into the database
 
