@@ -85,7 +85,7 @@ if ( ! is_wp_error( $domain ) ) {
 ### A complex example — using chained methods for complex mappings
 
 If you need more control over your mappings and domain settings, you may use the methods provided to you by the
-`WPLK_Domain` and `WPLK_Mapping` objects as per the following example:
+[WPLK_Domain](wplk_domain.md) and [WPLK_Mapping](wplk_mapping.md) objects as per the following example:
 
 ```php
 $domain = wplk_add_domain( 'mapped-domain-3.test' );
@@ -118,7 +118,7 @@ if ( ! is_wp_error( $domain ) ) {
 
 ### Inserting a new domain into the database
 
-You may create new domains using the `wplk_add_domain()` function. The function will return a `WPLK_Domain` object on
+You may create new domains using the `wplk_add_domain()` function. The function will return a [WPLK_Domain](wplk_domain.md) object on
 success or a `WP_Error` object when the domain is already in the database or some other failure occurs. Newly created
 domains are inactive by default — that is, they are in a `draft` status and are not actively handling requests made to
 the site. See [Activating a domain](#activating-a-domain).
@@ -148,7 +148,7 @@ $domain = wplk_add_domain( 'mydomain.com', [
 
 ### Getting an existing domain
 
-You may get an existing domain using the `wplk_get_domain()` function. The function will return a `WPLK_Domain` object
+You may get an existing domain using the `wplk_get_domain()` function. The function will return a [WPLK_Domain](wplk_domain.md) object
 if the domain is found otherwise it will return `NULL`. You can pass this function one of the following:
 
 1. The domain post ID.
@@ -194,7 +194,7 @@ if( wplk_domain_exists( 'http://mydomain.com/some/path' ) ){
 ### Checking if an existing domain is active
 
 You may check if an existing domain is active using the `wplk_domain_is_active()` function. The function can accept
-either the domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The
+either the domain ID, the domain host name, a full URL containing the host name, or a [WPLK_Domain](wplk_domain.md) instance. The
 function will return boolean `TRUE` or `FALSE` if the domain exists. If the domain cannot be found, a `WP_Error` object
 will be returned.
 
@@ -223,7 +223,7 @@ if( $domain and wplk_domain_is_active( $domain ) ){
 
 ### Updating a domain
 
-To save any changes made on a `WPLK_Domain` object to the database, you may pass the object to the `wplk_update_domain()`
+To save any changes made on a [WPLK_Domain](wplk_domain.md) object to the database, you may pass the object to the `wplk_update_domain()`
 function. The function will return the domain post ID on success or a `WP_Error` object on failure.
 
 ```php
@@ -241,7 +241,7 @@ if( is_wp_error( $saved ) ){
 ### Activating a domain
 
 If a domain is eligible for activation, you may activate it using the `wplk_activate_domain()` function. The function
-can accept either the domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance.
+can accept either the domain ID, the domain host name, a full URL containing the host name, or a [WPLK_Domain](wplk_domain.md) instance.
 The function will return boolean `TRUE` on success or a `WP_Error` object where activation cannot be handled.
 
 ```php
@@ -264,7 +264,7 @@ if( $domain ){
 ### Deactivating a domain
 
 You may deactivate a domain using the `wplk_deactivate_domain()` function. The function can accept either the domain ID,
-the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The function will return boolean
+the domain host name, a full URL containing the host name, or a [WPLK_Domain](wplk_domain.md) instance. The function will return boolean
 `TRUE` on success or a `WP_Error` object where activation cannot be handled.
 
 ```php
@@ -300,7 +300,7 @@ For more examples of this shorthand approach, see [Inserting a new domain into t
 
 Alternatively, you may choose to map the domain root to a taxonomy term archive, a post type archive, or even redirect
 the domain root to a different URL entirely. To do so, you may chain method calls off the `root()` method which returns
-a `WPLK_Mapping` object. Consider the following examples:
+a [WPLK_Mapping](wplk_mapping.md) object. Consider the following examples:
 
 ```php
 $domain = wplk_add_domain( 'mydomain.com' );
@@ -328,7 +328,7 @@ The fallback mapping on domain is used when an incoming request cannot be matche
 domain. By default, the fallback behaviour of a domain will redirect to the domain root with a HTTP status of 302. You
 may override the default behaviour in order to map the fallback to any post, post type archive, taxonomy term archive,
 or to redirect to a URL of your choice. To do so, you may chain method calls off the `fallback()` method which returns
-a `WPLK_Mapping` object. Consider the following examples:
+a [WPLK_Mapping](wplk_mapping.md) object. Consider the following examples:
 
 ```php
 $domain = wplk_add_domain( 'mydomain.com' );
@@ -353,7 +353,7 @@ $domain->fallback()->redirects_to( 'http://somesite.com', '302' );
 If you simply need to map a full URL to a post or a taxonomy term archive, you may do so using the `wplk_add_url()`
 function. The function expects a full URL (must contain the domain host name) along with a resource to map to. The
 resource can be either a post ID, a `WP_Post` object, or a `WP_Term` object. The function will determine and find the
-domain, then map the path to the given resource. The function will return either the `WPLK_Domain` object or a
+domain, then map the path to the given resource. The function will return either the [WPLK_Domain](wplk_domain.md) object or a
 `WP_Error` object where it could not map the URL.
 
 ```php
@@ -391,8 +391,7 @@ changes as it runs. The above example would result in _four_ update calls.
 ### Adding mappings to a domain
 
 If a domain needs more than just a root mapping, you may add any number of mappings to a domain using the `add_mapping()`
-method on the `WPLK_Domain` instance. When invoked, the method creates a `WPLK_Mapping` object, adds it to the
-`WPLK_Domain` object, and returns the mapping object for further configuration. Consider the following examples:
+method on the [WPLK_Domain](wplk_domain.md) instance. When invoked, the method creates a [WPLK_Mapping](wplk_mapping.md) object, adds it to the `WPLK_Domain` object, and returns the mapping object for further configuration. Consider the following examples:
 
 ```php
 $domain = wplk_add_domain( 'mydomain.com' );
@@ -423,7 +422,7 @@ demonstrated in [WPLK_Domain > Adding URL mappings](wplk_domain.md#adding-url-ma
 ### Deleting a domain
 
 You may delete a domain from the database using the `wplk_delete_domain()` function. The function can accept either the
-domain ID, the domain host name, a full URL containing the host name, or a `WPLK_Domain` instance. The function will
+domain ID, the domain host name, a full URL containing the host name, or a [WPLK_Domain](wplk_domain.md) instance. The function will
 return boolean `TRUE` if the domain was deleted or a `WP_Error` object if the domain could not be found or could not be
 deleted.
 

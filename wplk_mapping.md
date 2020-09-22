@@ -11,7 +11,7 @@
 
 ## Introduction
 
-`WPLK_Mapping` objects are used to define URL path mapping behaviour for a domain. The class is part of the API and can be used directly if needed but that will likely be a rare case. It is more likely that instances of this class will be modified as a result of working with methods on the `WPLK_Domain` object. 
+`WPLK_Mapping` objects are used to define URL path mapping behaviour for a domain. The class is part of the API and can be used directly if needed but that will likely be a rare case. It is more likely that instances of this class will be modified as a result of working with methods on the [WPLK_Domain](wplk_domain.md) object. 
 
 ## Read only properties
 
@@ -60,7 +60,7 @@ $mapping->set_is_regex( true );
 
 ## Getting the mapping ID
 
-The mapping ID is generated automatically but there may be times where you wish to use it — e.g; finding a mapping by ID via a `WPLK_Domain` object. To get the mapping ID, use the `id()` method.
+The mapping ID is generated automatically but there may be times where you wish to use it — e.g; finding a mapping by ID via a [WPLK_Domain](wplk_domain.md) object. To get the mapping ID, use the `id()` method.
 
 ```php
 $mapping = new WPLK_Mapping( 'some/url' );
