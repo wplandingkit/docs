@@ -21,7 +21,7 @@
 - [Integration Examples](#integration-examples)
     - [Creating domains on WooCommerce transaction completion](creating-domains-on-woocommerce-transaction-completion.md)
     - [Creating domains on Easy Digital Downloads (EDD) transaction completion](creating-domains-on-easy-digital-downloads-edd-transaction-completion.md)
-    - [Creating domains on user registration](creating-domains-on-user-registration.md)
+    <!-- - [Creating domains on user registration](creating-domains-on-user-registration.md) -->
 
 ## Introduction
 
