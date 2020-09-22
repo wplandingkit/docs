@@ -15,48 +15,50 @@ function wplk_on_wc_order_complete( $order_id, WC_Order $order ) {
 
 	// Loop through all order items and process any with the matching product ID.
 	foreach ( $order->get_items() as $item ) {
+		
+		// Skip line items that don't match our product ID.
+		if ( $item->get_product_id() !== $landing_page_product_id ) {
+			continue;
+		}
 
-		if ( $item->get_product_id() === $landing_page_product_id ) {
+		// Create matching number of domains to the quantity ordered.
+		for ( $i = 0; $i < $item->get_quantity(); $i ++ ) {
 
-			// Create matching number of domains to the quantity ordered.
-			for ( $i = 0; $i < $item->get_quantity(); $i ++ ) {
+			// Establish domain-related variables. The $host variable is being auto-generated based on the order
+			// number, the line item ID, and the QTY number. This ensure unique host names are generated for each
+			// domain. This can be changed later on at the domain edit screen or some custom order fields could be
+			// used here to create domains to order.
+			$customer_id = $order->get_customer_id();
+			$domain_number = $i + 1;
+			$host = sprintf( "order%s-item%s-domain%s.com", $order->get_id(), $item->get_id(), $domain_number );
+			$meta_key = "domain_{$domain_number}_created";
 
-				// Establish domain-related variables. The $host variable is being auto-generated based on the order
-				// number, the line item ID, and the QTY number. This ensure unique host names are generated for each
-				// domain. This can be changed later on at the domain edit screen or some custom order fields could be
-				// used here to create domains to order.
-				$customer_id = $order->get_customer_id();
-				$domain_number = $i + 1;
-				$host = sprintf( "order%s-item%s-domain%s.com", $order->get_id(), $item->get_id(), $domain_number );
-				$meta_key = "domain_{$domain_number}_created";
-
-				// If the order item already has a domain marked against this meta key, stop here.
-				if ( wc_get_order_item_meta( $item->get_id(), $meta_key ) ) {
-					return;
-				}
-
-				// Insert the domain.
-				$domain = wplk_add_domain( $host, [ 'owner_id' => $customer_id ] );
-
-				// If there is an error while creating the domain, add an order note with details and stop there.
-				if ( is_wp_error( $domain ) ) {
-					$order->add_order_note( "There was a problem creating the $host domain. Error reads: {$domain->get_error_message()}" );
-
-					return;
-				}
-
-				// Add order note indicating that the domain was created.
-				$order->add_order_note( "Domain with host name $host created" );
-
-				// Build a link to the domain edit screen.
-				$domain_edit_anchor = sprintf( '<a href="%s" target="_blank">%s</a>',
-					admin_url( 'post.php?post=' . $domain->post_id() . '&action=edit' ),
-					$domain->post_id()
-				);
-
-				// Save the link against the order item meta.
-				wc_add_order_item_meta( $item->get_id(), $meta_key, $domain_edit_anchor );
+			// If the order item already has a domain marked against this meta key, stop here.
+			if ( wc_get_order_item_meta( $item->get_id(), $meta_key ) ) {
+				return;
 			}
+
+			// Insert the domain.
+			$domain = wplk_add_domain( $host, [ 'owner_id' => $customer_id ] );
+
+			// If there is an error while creating the domain, add an order note with details and stop there.
+			if ( is_wp_error( $domain ) ) {
+				$order->add_order_note( "There was a problem creating the $host domain. Error reads: {$domain->get_error_message()}" );
+
+				return;
+			}
+
+			// Add order note indicating that the domain was created.
+			$order->add_order_note( "Domain with host name $host created" );
+
+			// Build a link to the domain edit screen.
+			$domain_edit_anchor = sprintf( '<a href="%s" target="_blank">%s</a>',
+				admin_url( 'post.php?post=' . $domain->post_id() . '&action=edit' ),
+				$domain->post_id()
+			);
+
+			// Save the link against the order item meta.
+			wc_add_order_item_meta( $item->get_id(), $meta_key, $domain_edit_anchor );
 		}
 	}
 }
