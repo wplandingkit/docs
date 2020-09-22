@@ -1,3 +1,5 @@
+# Creating domains on WooCommerce transaction completion
+
 The following example hooks into WooCommerce's order status hooks and creates domains on order completion. The example looks for one product (using the product ID) and, if found, creates one or more domains to suit the quantity on order. Each domain is assigned to the customer.
 
 The example is auto-generating a placeholder domain host names which can be edited by the customer later on but you may choose to use some form of input on the order to capture the customers desired domain and use that here instead. 
