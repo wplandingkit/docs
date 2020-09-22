@@ -4,6 +4,7 @@
 - [Creating a new domain](#creating-a-new-domain)
     - [Setting the domain owner](#setting-the-domain-owner)
 - [Retrieving an existing domain](#retrieving-an-existing-domain)
+    - [Domains in the trash do not exist](#domains-in-the-trash-do-not-exist)
 - [Managing URL mappings](#managing-url-mappings)
     - [Working with the root mapping](#working-with-the-root-mapping)
     - [Working with the fallback mapping](#working-with-the-fallback-mapping)
@@ -95,6 +96,10 @@ $domain = WPLK_Domain::get_instance( 'http://mydomain.com/some/url' );
 
 Be mindful that the most performant option is to use the post ID. Using the host name resorts to searching for the
 underlying domain post by title.
+
+### Domains in the trash do not exist
+
+If a domain post has been sent to the trash, it is considered non-existent and cannot be retrieved using this method.
 
 ## Managing URL mappings
 
