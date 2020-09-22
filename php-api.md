@@ -2,6 +2,9 @@
 
 - [Introduction](#introduction)
 - [Quickstart](#quickstart)
+    - [A simple example — mapping a domain to a page](#a-simple-example--mapping-a-domain-to-a-page)
+    - [Adding a domain and a few simple mappings](#adding-a-domain-and-a-few-simple-mappings)
+    - [A complex example — using chained methods for complex mappings](#a-complex-example--using-chained-methods-for-complex-mappings)
 - [Usage Guide](#usage-guide)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
     - [Getting an existing domain](#getting-an-existing-domain)
