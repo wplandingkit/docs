@@ -7,3 +7,4 @@ This repository is not for plugin support. If you have a question, please email 
 If you find any issues in the documentation, please create a [GitHub issue](https://github.com/wplandingkit/docs/issues) and be sure to include as much information as you can.
 
 - [PHP API](php-api.md)
+- [Controlling edit access to domains](controlling-edit-access-to-domains.md)

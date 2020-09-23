@@ -6,7 +6,6 @@ The example is auto-generating a placeholder domain host names which can be edit
 
 This example also provides the admin with payment notes that communicate what is happening around domain creation and links directly to the domain edit screen.
 
-
 ```php
 add_action( 'edd_complete_purchase', 'wplk_on_edd_order_complete', 10, 3 );
 function wplk_on_edd_order_complete( $payment_id, EDD_Payment $payment, EDD_Customer $customer ) {
@@ -62,3 +61,7 @@ function wplk_on_edd_order_complete( $payment_id, EDD_Payment $payment, EDD_Cust
 	}
 }
 ```
+
+What this doesn't cover is how to allow the customer to edit their domain. If you wish to provide them with access to
+the WordPress admin, you can assign custom capabilities to their user role allowing them varying degrees of access to
+manage domains. See [Controlling edit access to domains](controlling-edit-access-to-domains.md) for more information.

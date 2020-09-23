@@ -63,3 +63,7 @@ function wplk_on_wc_order_complete( $order_id, WC_Order $order ) {
 	}
 }
 ```
+
+What this doesn't cover is how to allow the customer to edit their domain. If you wish to provide them with access to
+the WordPress admin, you can assign custom capabilities to their user role allowing them varying degrees of access to
+manage domains. See [Controlling edit access to domains](controlling-edit-access-to-domains.md) for more information.
