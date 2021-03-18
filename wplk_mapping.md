@@ -79,6 +79,16 @@ $mapping = new WPLK_Mapping( 'some/url' );
 $mapping->maps_to_post( $post );
 ```
 
+### Enabling automatic sub page mapping
+
+If you are mapping to a post object that has a hierarchical post type, you may enable automatic sub page mapping by passing `TRUE` as the second 
+method parameter. If the post type is not hierarchical, the parameter will be ignored and sub page mapping will not function for this mapping.  
+
+```php
+$mapping = new WPLK_Mapping( 'some/url' );
+$mapping->maps_to_post( $post, true );
+``` 
+
 ## Mapping a URL to a term archive
 
 You may map a path to a taxonomy term archive using the `maps_to_term_archive()` method. The method will accept a term ID or a 
