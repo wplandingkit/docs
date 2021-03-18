@@ -7,6 +7,7 @@
     - [A complex example — using chained methods for complex mappings](#a-complex-example--using-chained-methods-for-complex-mappings)
 - [Usage Guide](#usage-guide)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
+        - [Enabling automatic sub page mapping on insert](#enabling-automatic-sub-page-mapping-on-insert)
     - [Getting an existing domain](#getting-an-existing-domain)
     - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
     - [Checking if an existing domain is active](#checking-if-an-existing-domain-is-active)
@@ -143,6 +144,20 @@ $domain = wplk_add_domain( 'mydomain.com', [
     'enforced_protocol' => 'https',
 ] );
 ```
+
+#### Enabling automatic sub page mapping on insert
+
+You may enable automatic sub page mapping by passing `TRUE` to the `map_sub_pages` config key. Be mindful that automatic
+sub page mapping is only available for post types that are hierarchical. If the given `post_id` is not of a hierarhical
+post type, the `map_sub_pages` argument will be ignored. 
+
+```php
+$page_id = 1234;
+$domain = wplk_add_domain( 'mydomain.com', [
+    'post_id' => $post_id,
+    'map_sub_pages' => true,
+] );
+``` 
 
 ### Getting an existing domain
 
@@ -291,6 +306,9 @@ $domain = wplk_add_domain( 'mydomain.com' );
 
 // Map the root to a post using either a post ID or WP_Post object.
 $domain->root()->maps_to_post( $post );
+
+// Map the root to a post using either a post ID or WP_Post object and enable automatic sub page mapping.
+$domain->root()->maps_to_post( $post, true );
 
 // Map the root to a taxonomy term archive using either a term ID or WP_Term object.
 $support_pagination = true;
