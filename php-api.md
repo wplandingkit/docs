@@ -147,14 +147,14 @@ $domain = wplk_add_domain( 'mydomain.com', [
 
 #### Enabling automatic sub page mapping on insert
 
-You may enable automatic sub page mapping by passing `TRUE` to the `map_sub_pages` config key. Be mindful that automatic
+You may enable automatic sub page mapping by passing `TRUE` to the `map_sub_pages` config key. Be mindful automatic
 sub page mapping is only available for post types that are hierarchical. If the given `post_id` is not of a hierarhical
 post type, the `map_sub_pages` argument will be ignored. 
 
 ```php
 $page_id = 1234;
 $domain = wplk_add_domain( 'mydomain.com', [
-    'post_id' => $post_id,
+    'post_id' => $page_id,
     'map_sub_pages' => true,
 ] );
 ``` 
