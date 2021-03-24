@@ -8,7 +8,6 @@
 - [Usage Guide](#usage-guide)
     - [Inserting a new domain into the database](#inserting-a-new-domain-into-the-database)
         - [Enabling automatic sub page mapping on insert](#enabling-automatic-sub-page-mapping-on-insert)
-        - [Setting a site icon on insert](#setting-a-site-icon-on-insert)
     - [Getting an existing domain](#getting-an-existing-domain)
     - [Checking if a domain already exists in the database](#checking-if-a-domain-already-exists-in-the-database)
     - [Checking if an existing domain is active](#checking-if-an-existing-domain-is-active)
@@ -20,6 +19,9 @@
     - [Mapping full URLs](#mapping-full-urls)
     - [Adding mappings to a domain](#adding-mappings-to-a-domain)
     - [Deleting a domain](#deleting-a-domain)
+    - [Setting the site icon for a domain](#setting-the-site-icon-for-a-domain)
+        - [Setting a site icon on insert](#setting-a-site-icon-on-insert)
+        - [Setting and getting a site icon using object methods](#setting-and-getting-a-site-icon-using-object-methods)
 - [Integration Examples](#integration-examples)
     - [Creating domains on WooCommerce transaction completion](creating-domains-on-woocommerce-transaction-completion.md)
     - [Creating domains on Easy Digital Downloads (EDD) transaction completion](creating-domains-on-easy-digital-downloads-edd-transaction-completion.md)
@@ -158,21 +160,7 @@ $domain = wplk_add_domain( 'mydomain.com', [
     'post_id' => $page_id,
     'map_sub_pages' => true,
 ] );
-``` 
-
-#### Setting a site icon on insert
-
-You may set an attachment as the site icon by passing the attachment `ID` to the `site_icon` config key. For this to 
-work, the image file must already be in the WordPress media library. If it isn't, the site icon will be ignored.
-
-```php
-$page_id = 1234;
-$attachment_id = 543;
-$domain = wplk_add_domain( 'mydomain.com', [
-    'post_id' => $page_id,
-    'site_icon' => $attachment_id,
-] );
-``` 
+```  
 
 ### Getting an existing domain
 
@@ -438,4 +426,37 @@ wplk_delete_domain( 'http://mydomain.com/some/path' );
 // Delete using a WPLK_Domain instance.
 $domain = wplk_get_domain( 'mydomain.com' );
 wplk_delete_domain( $domain );
+```
+
+### Setting the site icon for a domain
+
+As of version 1.3.0, you may set an attachment ID as the domain's site icon.
+
+#### Setting a site icon on insert
+
+You may set an attachment as the site icon by passing the attachment `ID` to the `site_icon` config key. For this to 
+work, the image file must already be in the WordPress media library. If it isn't, the site icon will be ignored.
+
+```php
+$page_id = 1234;
+$attachment_id = 543;
+$domain = wplk_add_domain( 'mydomain.com', [
+    'post_id' => $page_id,
+    'site_icon' => $attachment_id,
+] );
+```
+
+#### Setting and getting a site icon using object methods
+
+You may also use the underlying object methods to set/get the attachment ID of a domain's site icon.
+
+```php
+$page_id = 1234;
+$attachment_id = 543;
+$domain = wplk_add_domain( 'mydomain.com', $page_id );
+$domain->set_site_icon( $attachment_id );
+$domain->save();
+
+// Getting the site icon ID from a domain:
+$domain->site_icon();
 ```
