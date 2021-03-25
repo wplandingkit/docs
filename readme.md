@@ -8,3 +8,5 @@ If you find any issues in the documentation, please create a [GitHub issue](http
 
 - [PHP API](php-api.md)
 - [Controlling edit access to domains](controlling-edit-access-to-domains.md)
+- Hooks and Filters
+    - [Domain Init Action Hook](domain-init-action-hook.md)
