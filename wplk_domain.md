@@ -15,7 +15,7 @@
 
 ## Introduction
 
-The `WPLK_Domain` object is the backbone of domain management and is the underlying component powering all of the API
+The `WPLK_Domain` object is the backbone of domain management and is the underlying component powering all the API
 functions. The class can be used to:
 
 1. Retrieve existing domain instances from the database and;
