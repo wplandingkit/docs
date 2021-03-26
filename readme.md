@@ -8,5 +8,14 @@ If you find any issues in the documentation, please create a [GitHub issue](http
 
 - [PHP API](php-api.md)
 - [Controlling edit access to domains](controlling-edit-access-to-domains.md)
-- Hooks and Filters
-    - [Domain Init Action Hook](domain-init-action-hook.md)
+- [Disabling plugin response headers](disabling-plugin-response-headers.md)
+
+## Hooks and Filters
+
+- [Domain Init Action Hook](domain-init-action-hook.md)
+
+## Guides
+
+- [Creating domains on woocommerce transaction completion](creating-domains-on-woocommerce-transaction-completion.md)
+- [Creating domains on easy digital downloads edd transaction completion](creating-domains-on-easy-digital-downloads-edd-transaction-completion.md)
+- [Creating domains on user registration](creating-domains-on-user-registration.md)
