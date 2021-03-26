@@ -9,3 +9,10 @@ You may disable the response headers in your WordPress admin as follows:
 1. Go to **Settings > WP Landing Kit**.
 1. Under **General Settings**, disable the **Response Headers** option.
 1. Click the **Save Changes** button.
+
+If you prefer to disable the header using PHP code, you may do so using the `wp_landing_kit/setting/add_response_headers` 
+filter as per the following example:
+
+```php
+add_filter( 'wp_landing_kit/setting/add_response_headers', '__return_false' );
+```
